@@ -1,16 +1,150 @@
-.row {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0 4px;
+@charset "utf-8";
+
+
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: #555555;
+  padding: 9px 62px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
-/* Create two equal columns that sits next to each other */
+.button5 {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+.button5:hover {
+  background-color: #555555;
+  color: white;
+}
+
+.navbar-nav.mr-auto .nav-item.active .nav-link {
+    float: none;
+
+
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Float four columns side by side */
 .column {
-  flex: 50%;
-  padding: 0 4px;
+  float: left;
+  width: 33%;
+  padding: 0 16px;
 }
 
-.column img {
-  margin-top: 8px;
-  vertical-align: middle;
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.column .card h3 {
+    font-size: 21px;
+}
+.column .card .w3-opacity {
+    text-align: left;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+.row .column .card {
+    text-align: justify;
+}
+body footer {
+ text-align: center;
+  font-family: Arial;
+  
+  color: #000000;
+  clear: both;
+}
+#tour .w3-container.w3-content.w3-padding-64 img {
+    text-align: center;
+}
+#tour .w3-container.w3-content.w3-padding-64 main {
+
+
+}
+#tour .w3-container.w3-content.w3-padding-64 main {
+
+
+}
+body footer {
+    background-image: -webkit-linear-gradient(270deg,rgba(18,18,18,1.00) 0%,rgba(0,0,0,1.00) 100%);
+    background-image: -moz-linear-gradient(270deg,rgba(18,18,18,1.00) 0%,rgba(0,0,0,1.00) 100%);
+    background-image: -o-linear-gradient(270deg,rgba(18,18,18,1.00) 0%,rgba(0,0,0,1.00) 100%);
+    background-image: linear-gradient(180deg,rgba(18,18,18,1.00) 0%,rgba(0,0,0,1.00) 100%);
+    color: #FFFFFF;
+
+}
+#tour .w3-container.w3-content.w3-padding-64 h3 {
+
+}
+#tour .w3-container.w3-content.w3-padding-64 h4 {
+    text-align: center;
+}
+#tour .w3-container.w3-content.w3-padding-64 a {
+    color: #FFFFFF;
+    text-align: center;
+    margin-left: 230px;
+    font-size: 20px;
+}
+.card.col-md-4.col-xl-12 .card-body .card-text {
+
+}
+#contact .w3-wide.w3-center {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 2220px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  text-align: center;
+  background-color: #3c3c3c
+
+	  
+
+
+;
 }

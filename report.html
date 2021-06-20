@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Missing People | About</title>
+<title>Missing People | Report</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="images/favicon.ico" />
@@ -39,7 +39,7 @@ body {
 <body>
 <div class="w3-black" id="tour">
   <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-    <h2 class="w3-wide w3-center">About</h2>
+    <h2 class="w3-wide w3-center">Report</h2>
     <p class="w3-opacity w3-center"><i>A place where the unheard can be heard&nbsp;</i></p>
     <br>
     <div>
@@ -54,8 +54,33 @@ body {
 
 <!-- The Contact Section -->
 <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
-  <h2 class="w3-center">About MissingPeople</h2>
-   <h3 class="w3-wide w3-center">This website was created for a school project. If you wish to report a real missing person within Australia, go to https://www.missingpersons.gov.au/report&nbsp; &nbsp;</h3> 
+  <h2 class="w3-center">Submit a report</h2>
+   <div class="container-fluid">
+     <ul id="clothingnav1" class="nav nav-tabs" role="tablist">
+       <li class="nav-item"> <a class="nav-link active" href="#home1" id="hometab1" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">Tab 1</a> </li>
+       <li class="nav-item"> <a class="nav-link" href="#paneTwo1" role="tab" id="hatstab1" data-toggle="tab" aria-controls="hats">Tab 2</a> </li>
+       <!-- Dropdown -->
+       <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> Tab 3 Dropdown </a>
+         <div class="dropdown-menu"> <a class="dropdown-item" href="#tabDropDownOne1" role="tab" id="dropdownshoestab1" data-toggle="tab" aria-controls="dropdownShoes">Dropdown Link 1</a> <a class="dropdown-item" href="#tabDropDownTwo1" role="tab" id="dropdownbootstab1" data-toggle="tab" aria-controls="dropdownBoots">Dropdown Link 2</a> </div>
+       </li>
+     </ul>
+     <!-- Content Panel -->
+     <div id="clothingnavcontent1" class="tab-content">
+       <div role="tabpanel" class="tab-pane fade show active" id="home1" aria-labelledby="hometab1">
+         <p>Content in <b>Tab Panel 1</b></p>
+       </div>
+       <div role="tabpanel" class="tab-pane fade" id="paneTwo1" aria-labelledby="hatstab1">
+         <p>Content 2</p>
+       </div>
+       <div role="tabpanel" class="tab-pane fade" id="tabDropDownOne1" aria-labelledby="dropdownshoestab1">
+         <p>Dropdown content#1</p>
+       </div>
+       <div role="tabpanel" class="tab-pane fade" id="tabDropDownTwo1" aria-labelledby="dropdownbootstab1">
+         <p>Dropdown content#2</p>
+       </div>
+     </div>
+   </div>
+   <h3 class="w3-wide w3-center">&nbsp;</h3> 
 
    
 	</div>
