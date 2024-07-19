@@ -96,7 +96,8 @@ pageviews:
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: http://127.0.0.1:4000/assets/img/avatar/avatar.png
+#avatar: http://127.0.0.1:4000/assets/img/avatar/avatar.png ## Local development
+avatar: https://cboski.github.io/assets/img/avatar/avatar.png ## Github hosted
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.
