@@ -1,5 +1,8 @@
 ---
 title: HTB - Footprinting Lab (Hard)
+description: Tackling the HackTheBox Academy Footprinting Lab (Hard)
+author: cboski
+pin: true
 categories: [htb]
 tags: [htb]     # TAG names should always be lowercase
 ---
