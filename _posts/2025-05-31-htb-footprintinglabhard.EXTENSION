@@ -9,6 +9,7 @@ Mainly notes for self...
 
 
 First we can start off with a routine NMAP scan
+
 ```text
 nmap -sV 10.129.100.246
 ```
