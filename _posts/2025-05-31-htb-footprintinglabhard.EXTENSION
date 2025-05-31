@@ -4,4 +4,11 @@ categories: [htb]
 tags: [htb]     # TAG names should always be lowercase
 ---
 
-In progress...
+Mainly notes for self...
+
+
+
+First we can start off with a routine NMAP scan
+```text
+nmap -sV 10.129.100.246
+```
